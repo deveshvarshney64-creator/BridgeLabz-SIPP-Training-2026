@@ -1,4 +1,4 @@
-public class codebuilder {
+public class Ravi {
     public static void main(String[] args) {
        String name = "Ravi";
        int age = 19;
@@ -15,5 +15,5 @@ public class codebuilder {
         System.out.println("Membership Fee: ₹" + MembershipFee);
         System.out.println("Annual Bonus (12%): ₹" + bonusInt);
     }
-}
+}   
 
