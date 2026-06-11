@@ -9,5 +9,7 @@ public class Rocketcountdownwhile {
             counter--;
         }
         System.out.println("Rocket Launched!");
+        sc.close();
+
     }
 }

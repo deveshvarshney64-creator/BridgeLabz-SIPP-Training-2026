@@ -12,5 +12,6 @@ public class Sumuntilzero {
             number = sc.nextDouble();
         }
         System.out.println("Total Sum = " + total);
+        sc.close();
     }
 }

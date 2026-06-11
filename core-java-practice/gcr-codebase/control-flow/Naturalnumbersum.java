@@ -21,6 +21,7 @@ public class Naturalnumbersum {
             }
         } else {
             System.out.println(n + " is not a natural number.");
+            sc.close();
         }
     }
 }

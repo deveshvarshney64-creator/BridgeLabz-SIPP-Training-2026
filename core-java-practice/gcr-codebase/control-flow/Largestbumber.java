@@ -14,6 +14,6 @@ public class Largestbumber {
         System.out.println("Is the first number the largest? " + firstLargest);
         System.out.println("Is the second number the largest? " + secondLargest);
         System.out.println("Is the third number the largest? " + thirdLargest);
-        
+        sc.close();
     }
 }

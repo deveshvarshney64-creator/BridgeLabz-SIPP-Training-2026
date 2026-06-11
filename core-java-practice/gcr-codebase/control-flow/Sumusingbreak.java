@@ -13,5 +13,6 @@ public class Sumusingbreak {
             total += number;
         }
         System.out.println("Total Sum = " + total);
+        sc.close();
     }
 }
