@@ -1,80 +1,67 @@
-import java.util.HashMap;
-import java.util.Map;
-public class spyagency {
-       public static void main(String[] args) {
-
-        String secretMessage = "madam";
-
-        reverseString(secretMessage);
-
-        System.out.println("Palindrome: " + isPalindrome(secretMessage));
-
-        countVowelsAndConsonants("BridgeLabz");
-
-        System.out.println("Anagram Check: " +
-                isAnagram("listen", "silent"));
-
-        System.out.println("First Non-Repeating Character: " +
-                firstNonRepeatingCharacter("swiss"));
+import java.util.*;
+public class Spyagency {
+    public static String reverseMessage(String message) {
+        return new StringBuilder(message).reverse().toString();
     }
-
-    public static void reverseString(String str) {
-        StringBuilder reversed = new StringBuilder(str);
-        System.out.println("Reversed String: " + reversed.reverse());
+    public static boolean isPalindrome(String message) {
+        String cleaned = message.replaceAll("\\s+", "").toLowerCase();
+        return cleaned.equals(new StringBuilder(cleaned).reverse().toString());
     }
-
-    public static boolean isPalindrome(String str) {
-        String reversed = new StringBuilder(str).reverse().toString();
-        return str.equalsIgnoreCase(reversed);
-    }
-
-    public static void countVowelsAndConsonants(String str) {
-        int vowels = 0;
-        int consonants = 0;
-
-        str = str.toLowerCase();
-
-        for (char ch : str.toCharArray()) {
+    public static void countVowelsAndConsonants(String message) {
+        int vowels = 0, consonants = 0;
+        for (char ch : message.toLowerCase().toCharArray()) {
             if (Character.isLetter(ch)) {
-                if ("aeiou".indexOf(ch) != -1)
+                if ("aeiou".indexOf(ch) != -1) {
                     vowels++;
-                else
+                } else {
                     consonants++;
+                }
             }
         }
-
         System.out.println("Vowels: " + vowels);
         System.out.println("Consonants: " + consonants);
     }
-
-    public static boolean isAnagram(String s1, String s2) {
-        s1 = s1.toLowerCase();
-        s2 = s2.toLowerCase();
-
-        if (s1.length() != s2.length())
-            return false;
-
-        char[] arr1 = s1.toCharArray();
-        char[] arr2 = s2.toCharArray();
-
-        java.util.Arrays.sort(arr1);
-        java.util.Arrays.sort(arr2);
-
-        return java.util.Arrays.equals(arr1, arr2);
+    public static boolean areAnagrams(String str1, String str2) {
+        char[] arr1 = str1.replaceAll("\\s+", "").toLowerCase().toCharArray();
+        char[] arr2 = str2.replaceAll("\\s+", "").toLowerCase().toCharArray();
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        return Arrays.equals(arr1, arr2);
     }
-
-    public static char firstNonRepeatingCharacter(String str) {
-        Map<Character, Integer> map = new HashMap<>();
-
-        for (char ch : str.toCharArray()) {
+    public static char firstNonRepeatingCharacter(String log) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (char ch : log.toCharArray()) {
             map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
-
-        for (char ch : str.toCharArray()) {
-            if (map.get(ch) == 1)
+        for (char ch : log.toCharArray()) {
+            if (map.get(ch) == 1) {
                 return ch;
+            }
         }
-        return '-';
+
+        return '\0';
     }
-    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter secret message: ");
+        String message = sc.nextLine();
+        System.out.println("Reversed Message: " + reverseMessage(message));
+        System.out.println("Is Palindrome: " + isPalindrome(message));
+
+        countVowelsAndConsonants(message);
+        System.out.print("Enter first intercepted message: ");
+        String intercept1 = sc.nextLine();
+        System.out.print("Enter second intercepted message: ");
+        String intercept2 = sc.nextLine();
+        System.out.println("Are Anagrams: " + areAnagrams(intercept1, intercept2));
+        System.out.print("Enter surveillance log: ");
+        String log = sc.nextLine();
+        char result = firstNonRepeatingCharacter(log);
+        if (result != '\0') {
+            System.out.println("First Non-Repeating Character: " + result);
+        } else {
+            System.out.println("No Non-Repeating Character Found");
+        }
+        sc.close();
+    }
 }
