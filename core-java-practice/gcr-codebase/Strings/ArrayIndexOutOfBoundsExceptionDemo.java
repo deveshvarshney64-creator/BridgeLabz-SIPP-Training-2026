@@ -30,5 +30,6 @@ public class ArrayIndexOutOfBoundsExceptionDemo {
 
         System.out.println("\nGenerating Exception:");
         generateException(names);
+        sc.close();
     }
 }
