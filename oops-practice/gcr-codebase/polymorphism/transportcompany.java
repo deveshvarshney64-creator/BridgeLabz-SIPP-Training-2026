@@ -10,7 +10,7 @@ class Car extends Vehicle {
     }
 
     void openTrunk() {
-        System.out.println("Car trunk opened");
+        // System.out.println("Car trunk opened");
     }
 }
 
@@ -23,10 +23,6 @@ class Bus extends Vehicle {
 class Bike extends Vehicle {
     double fuelCost(int km) {
         return km * 5;
-    }
-
-    void kickStart() {
-        System.out.println("Bike started with kick");
     }
 }
 
@@ -60,11 +56,10 @@ public class transportcompany {
             else if (v instanceof Bike) {
                 System.out.println("Fuel cost for Bike: " + v.fuelCost(10));
                 Bike b = (Bike) v;
-                b.kickStart();
             }
 
             else if (v instanceof ElectricCar) {
-                System.out.println("Fuel cost for ElectricCar: " + v.fuelCost(10));
+            // left empty for ElectricCar
             }
         }
     }
