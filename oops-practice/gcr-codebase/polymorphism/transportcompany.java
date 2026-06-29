@@ -8,10 +8,6 @@ class Car extends Vehicle {
     double fuelCost(int km) {
         return km * 10;
     }
-
-    void openTrunk() {
-        // System.out.println("Car trunk opened");
-    }
 }
 
 class Bus extends Vehicle {
@@ -27,8 +23,12 @@ class Bike extends Vehicle {
 }
 
 class ElectricCar extends Vehicle {
+    double kmPerUnit = 5;
+    double costPerUnit = 10;
+
     double fuelCost(int km) {
-        return km * 2;
+        double units = km / kmPerUnit;
+        return units * costPerUnit;
     }
 }
 
@@ -46,7 +46,6 @@ public class transportcompany {
             if (v instanceof Car) {
                 System.out.println("Fuel cost for Car: " + v.fuelCost(10));
                 Car c = (Car) v;
-                c.openTrunk();
             }
 
             else if (v instanceof Bus) {
@@ -59,7 +58,7 @@ public class transportcompany {
             }
 
             else if (v instanceof ElectricCar) {
-            // left empty for ElectricCar
+                System.out.println("Charging cost for ElectricCar: " + v.fuelCost(10));
             }
         }
     }
